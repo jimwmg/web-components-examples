@@ -31,7 +31,7 @@ customElements.define('no-shadow',
       console.log('this',this);//表示 自定义元素 open-shadow
       const pElem = document.createElement('p');
       pElem.textContent = this.getAttribute('text');
-      pElem.classList.add('inner')
+      pElem.classList.add('inner-no-show')
       const style = document.createElement('style');
       style.textContent = `
         .outer{
@@ -58,7 +58,7 @@ customElements.define('open-shadow',
         console.log('open-shadow-click')
       },true)
 
-      pElem.classList.add('inner')
+      pElem.classList.add('inner2')
       const shadowRoot = this.attachShadow({mode: 'open'});
       shadowRoot.appendChild(pElem);
       console.log('shadowroot',shadowRoot)
@@ -77,10 +77,15 @@ customElements.define('closed-shadow',
       pElem.addEventListener('click',function(){
         console.log('closed-shadow-click')
       },true)
+      pElem.id = 'closeShadow'
+      pElem.classList.add('close-shadow')
       const shadowRoot = this.attachShadow({mode: 'closed'});
       shadowRoot.appendChild(pElem);
       console.log('shadowroot',shadowRoot)
       console.log('close-shadow-data',window.data)
+      console.log('p-close-show',document.getElementsByTagName('p'));
+      //同样获取不到
+      console.log('closeShadow',document.getElementById('closeShadow'));//null
     }
   }
 );
@@ -98,6 +103,10 @@ document.querySelector('html').addEventListener('click', e => {
 
 webcomponents
 声明的自定义组件依然可以访问 window 等基础全局变量
+
+外部 documnet.getElement 等方法不会获取 shadow dom 内部的元素
+
+自定义组件内部 通过  document.getElement 等方法获取 shadow dom 内部的元素同样获取不到
 
 基于 Shadow DOM， 可以实现基于组件的应用。它可以为网络开发中的常见问题提供解决方案：
 

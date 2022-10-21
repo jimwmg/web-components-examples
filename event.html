@@ -44,6 +44,12 @@
   container.addEventListener('myEvent',function(v){
     console.log('val--',v)
   })
+  /*
+  通用的 Event(name, options) 构造器接受任意事件名称和具有两个属性的 options 对象：
+
+如果事件应该冒泡，则 bubbles: true。
+如果 event.preventDefault() 应该有效，则 cancelable: true。
+  */
   //如果自定义事件添加了  bubbles 那么会冒泡，否则没有
   inner2.addEventListener('click',function(){
     inner2.dispatchEvent(new Event('myEvent', {bubbles: true}))
