@@ -6,7 +6,7 @@ class WordCount extends HTMLParagraphElement {
 
     // count words in element's parent element
     const wcParent = this.parentNode;
-
+    console.log('wcParent',wcParent);//正常的 parentNode  这里是 article
     function countWords(node){
       const text = node.innerText || node.textContent;
       return text.trim().split(/\s+/g).filter(a => a.trim().length > 0).length;
