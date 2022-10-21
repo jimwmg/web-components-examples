@@ -86,6 +86,8 @@ customElements.define('closed-shadow',
       console.log('p-close-show',document.getElementsByTagName('p'));
       //同样获取不到
       console.log('closeShadow',document.getElementById('closeShadow'));//null
+      //可以通过  shadowRoot 上的方法获取到
+      console.log('shadowRoot-closeShadow',shadowRoot.getElementById('closeShadow'))
     }
   }
 );
@@ -104,7 +106,7 @@ document.querySelector('html').addEventListener('click', e => {
 webcomponents
 声明的自定义组件依然可以访问 window 等基础全局变量
 
-外部 documnet.getElement 等方法不会获取 shadow dom 内部的元素
+外部 documnet.getElement 等方法不会获取 shadow dom 内部的元素 但是可以获取外部的元素
 
 自定义组件内部 通过  document.getElement 等方法获取 shadow dom 内部的元素同样获取不到
 

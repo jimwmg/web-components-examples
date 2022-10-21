@@ -1,4 +1,5 @@
 // Create a class for the element
+//可以直接作为一段 js 修改/添加 功能
 class ExpandingList extends HTMLUListElement {
   constructor() {
     // Always call super first in constructor
