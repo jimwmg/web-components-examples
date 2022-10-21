@@ -7,7 +7,16 @@
   </head>
   <body>
     <h1><code>edit-word</code> demo</h1>
-
+    <!-- 
+    slot
+    https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/slot 
+    HTML <slot> 元素，作为 Web Components 技术套件的一部分，是 Web 组件内的一个占位符。该占位符可以在后期使用自己的标记语言填充，这样您就可以创建单独的 DOM 树，并将它与其它的组件组合在一起。
+    
+    template
+    https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template
+    HTML 内容模板（<template>）元素是一种用于保存客户端内容机制，该内容在加载页面时不会呈现，但随后可以 (原文为 may be) 在运行时使用 JavaScript 实例化。
+    将模板视为一个可存储在文档中以便后续使用的内容片段。虽然解析器在加载页面时确实会处理 <template> 元素的内容，但这样做只是为了确保这些内容有效；但元素内容不会被渲染。
+    -->
 <template id="person-template">
   <div>
     <h2>Personal ID Card</h2>
@@ -18,7 +27,7 @@
     </ul>
   </div>
 </template>
-
+    <div>outer</div>
     <person-details>
       <p slot="person-name"><edit-word>Morgan</edit-word> Stanley</p>
       <span slot="person-age">36</span>

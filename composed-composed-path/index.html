@@ -6,11 +6,51 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <h1><code>composed</code> and <code>composedPath</code> demo</h1>
+    <style>
+      .inner{
+        color:green;
+      }
+    </style>
+     <p id="hostElement"></p>
+     <input type="text" name="hello">
+    <div class="outer">outer</div>
+    <h1 id="h1"><code>composed</code> and <code>composedPath</code> demo</h1>
+    <event-message id='event' text="eventMessage"></event-message>
+    <no-shadow text="I have an no shadow root"></no-shadow>
+    <open-shadow id="openshadow" text="I have an open shadow root"></open-shadow>
 
-    <open-shadow text="I have an open shadow root"></open-shadow>
+    <closed-shadow id="closeshadow" text="I have a closed shadow root"></closed-shadow>
+    <script>
+      const openShadow = document.getElementById('openshadow');
+      console.log('openShadow',openShadow);
 
-    <closed-shadow text="I have a closed shadow root"></closed-shadow>
+      const closeShadow = document.getElementById('closeshadow');
+      console.log('closeShadow',closeShadow);
 
+      document.getElementById('h1').addEventListener('click',function(){
+        console.log('h1-click')
+      },true)
+
+      window.data = {
+        name:'jim'
+      }
+       // 以 <p> 元素为根，创建 shadow DOM
+    const p = document.querySelector('#hostElement');  // ①
+    const shadowRoot = p.attachShadow({mode: 'open'});  // ②
+
+    // ③
+    shadowRoot.innerHTML = `
+      <style>div { text-decoration: underline; }</style>
+      <div>Here is some new text</div>
+    `;
+    console.log('shadowRoot: ', shadowRoot);
+
+    addEventListener('myEvent2',function(v){
+      console.log('val---',v)
+    })
+    // document.getElementById('event').addEventListener('myEvent',function(v){
+    //   console.log('val',v)
+    // })
+    </script>
   </body>
 </html>

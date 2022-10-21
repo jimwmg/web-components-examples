@@ -5,12 +5,15 @@ customElements.define('person-details',
 
       const template = document.getElementById('person-template');
       const templateContent = template.content;
-
+      console.log('templateContent',templateContent)
+      //https://developer.mozilla.org/zh-CN/docs/Web/API/Node/cloneNode
+      console.log('templateContent',templateContent.cloneNode(false))
+      console.log('templateContent',templateContent.cloneNode(true))
       const shadowRoot = this.attachShadow({mode: 'open'});
 
       const style = document.createElement('style');
       style.textContent = `
-        div { padding: 10px; border: 1px solid gray; width: 200px; margin: 10px; }
+        div { padding: 10px; border: 1px solid gray; width: 200px; margin: 10px;color:red }
         h2 { margin: 0 0 10px; }
         ul { margin: 0; }
         p { margin: 10px 0; }
