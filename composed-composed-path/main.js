@@ -99,9 +99,22 @@ document.querySelector('html').addEventListener('click', e => {
   console.log(e.composedPath());
 },true);
 
+customElements.whenDefined('event-message').then((res) => console.log('res',res))
 //当第三个参数设置为true就在捕获过程中执行，反之就在冒泡过程中执行处理函数。默认为false 表示
 
 /*
+
+CustomElementRegistry.define()
+定义一个新的自定义元素。
+
+CustomElementRegistry.get()
+返回指定自定义元素的构造函数，如果未定义自定义元素，则返回undefined。
+
+CustomElementRegistry.upgrade()
+Upgrades a custom element directly, even before it is connected to its shadow root.
+
+CustomElementRegistry.whenDefined()
+返回当使用给定名称定义自定义元素时将会执行的 promise。（如果已经定义了这样一个自定义元素，那么立即执行返回的 promise。）
 
 webcomponents
 声明的自定义组件依然可以访问 window 等基础全局变量
@@ -136,4 +149,10 @@ true 元素绑定的事件在 捕获阶段触发  冒泡阶段不会触发
 事件流模型为 先 捕获（capture） 后 冒泡 (bubble)
 
 如果 内部元素事件 设置了  e.stopPropagation() 那么冒泡将会停止，事件不会在继续往上
+
+
+属性监听：observedAttributes API 需要结合 attributeChangedCallback 生命周期，写起来代码量大；
+组件通信时传入复杂数据类型：只能通过 stringify 后的 attribute 传递，特殊对象格式如 Date，Function 等传递起来会非常复杂，和现在的组件库能力上相比功能会比较弱，使用场景相对单一；
+组件通信时双向绑定：需要结合自定义事件，写法会比较复杂。
+
 */

@@ -4,7 +4,7 @@ class Square extends HTMLElement {
   // attributeChangedCallback will work
   /*
   需要注意的是，如果需要在元素属性变化后，
-  触发attributeChangedCallback()回调函数，你必须监听这个属性。
+  触发 attributeChangedCallback()回调函数，你必须监听这个属性。
   这可以通过定义observedAttributes() get 函数来实现，
   observedAttributes()函数体内包含一个 return 语句，返回一个数组，包含了需要监听的属性名称：
   */
